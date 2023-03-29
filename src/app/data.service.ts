@@ -177,11 +177,17 @@ export class DataService {
 
   checkScores(toCheck: Comment | Reply) {
 
+    console.log('check score');
+
+
      if (toCheck.typ === 'comment') {
+
+       console.log('its a comment');
 
         // its a Comment Typ...
         this.commentSubject$.next(this.sortCommentsByScore(this.commentSubject$.getValue()));
       } else {
+       console.log('its a reply');
        const reply = toCheck as Reply;
         this.findParentArray(reply.parentId, this.commentSubject$.getValue());
       }
@@ -192,14 +198,32 @@ export class DataService {
   findParentArray(parentId: number, array: Comment[]) {
     let found = false;
 
+    // Find parent comment
     array.map(comment => {
       if (comment.id === parentId) {
 
         comment.replies = this.sortReplysByScore(comment.replies);
+        console.log('found parent');
         found = true;
         return;
       }
     });
+
+    if (!found) {
+      // Parent must be a reply
+      array.map(comment => {
+
+        comment.replies.map(reply => {
+          if (reply.id === parentId) {
+            comment.replies = this.sortReplysByScore(comment.replies);
+            found = true;
+            return;
+          }
+        });
+
+      });
+    }
+
   }
 
 }

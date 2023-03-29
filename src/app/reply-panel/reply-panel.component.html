@@ -34,7 +34,7 @@
       </div>
 
 
-      <div *ngIf="!edit.open" class="">
+      <div *ngIf="!edit.open" class="mt-3 md:mt-0">
         <!-- This is the content of the comment. -->
         <ng-content select="[id=message]"></ng-content>
       </div>
@@ -47,7 +47,7 @@
 
 
   <!-- This is the container for the like, dislike, reply, edit, and delete buttons. -->
-  <div class="flex justify-between">
+  <div class="flex justify-between items-center mt-3 md:mt-0">
 
     <!-- This is the component for the like and dislike buttons and vote function. -->
     <app-up-down-vote class="md:hidden" [comment]="reply"></app-up-down-vote>
