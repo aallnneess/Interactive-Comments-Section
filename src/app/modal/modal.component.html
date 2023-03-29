@@ -1,0 +1,30 @@
+<!-- This component represents a delete confirmation modal. When the user clicks on the "Delete" button, this modal is opened.-->
+
+<!-- Conditionally render this div based on the value of `hidden` -->
+<div *ngIf="!hidden"
+     [ngClass]="hidden ? closeModal(0) : openModal(100)"
+     class="absolute flex flex-col items-center top-0 right-0 left-0 bottom-0 bg-Dark-blue transition-all duration-500 bg-opacity-30 md:justify-center">
+
+  <!-- A container div for the modal content -->
+  <div class="mt-52 mx-5 text-White p-6 rounded-2xl space-y-4 max-w-[360px] bg-White md:mt-0">
+
+    <!-- A heading for the modal content -->
+    <h1 class="font-bold text-xl text-Dark-blue">Delete comment</h1>
+
+    <!-- A paragraph explaining the action that will be taken if the user chooses to delete the comment -->
+    <p class="text-Grayish-Blue">Are you sure you want to delete this comment? This will remove the comment and can't be undone.</p>
+
+    <!-- A container for the two buttons, rendered side by side -->
+    <div class="flex space-x-3">
+
+      <!-- A button to cancel the deletion and close the modal -->
+      <button class="font-medium w-full px-4 py-3 rounded-xl bg-Grayish-Blue" (click)="closeModal(0); restData()">NO, CANCEL</button>
+
+      <!-- A button to confirm the deletion, close the modal, and trigger the `delete` function -->
+      <button class="font-medium w-full px-4 py-3 rounded-xl bg-Soft-Red" (click)="closeModal(0); restData(); delete()">YES, DELETE</button>
+    </div>
+
+  </div>
+</div>
+
+

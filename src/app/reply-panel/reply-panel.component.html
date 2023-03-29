@@ -1,0 +1,70 @@
+<div class="w-full p-4 rounded-md bg-White">
+
+  <div class="md:flex">
+    <!-- This is the component for the like and dislike buttons and vote function. -->
+    <app-up-down-vote class="hidden md:block md:pr-4" [comment]="reply"></app-up-down-vote>
+
+    <div class="flex flex-col w-full">
+      <!-- This is the container for the user's image and username. -->
+      <div class="flex items-center justify-between">
+
+        <div class="flex items-center space-x-3">
+          <!-- This is the user's image. -->
+          <img class="w-8" src="{{image}}" alt="userimage">
+
+          <!-- This is the container for the username and "you" badge. -->
+          <div class="flex items-center space-x-1">
+            <ng-content select="[id=user]"></ng-content>
+
+            <!-- This is the "you" badge that is displayed if the comment belongs to the current user. -->
+            <p *ngIf="isCurrentUser()" class="px-1 text-sm text-White rounded-sm bg-Moderate-blue">you</p>
+          </div>
+
+          <!-- This is the container for the date of the comment. -->
+          <ng-content select="[id=date]"></ng-content>
+        </div>
+
+
+        <!-- This is the reply button, displayed only if the comment does not belong to the current user. When clicked, it opens the reply comment panel. -->
+        <app-reply-button *ngIf="!isCurrentUser()" class="hidden md:block"  [comment]="reply" [currentUser]="currentUser" (openReplybox)="replybox.open = true"></app-reply-button>
+
+        <!-- This is the container for the delete and edit buttons, displayed only if the comment belongs to the current user. -->
+        <app-delete-edit-buttons *ngIf="isCurrentUser()" class="hidden md:block" [comment]="reply" [currentUser]="currentUser" (openUpdatebox)="edit.open = true"></app-delete-edit-buttons>
+
+      </div>
+
+
+      <div *ngIf="!edit.open" class="">
+        <!-- This is the content of the comment. -->
+        <ng-content select="[id=message]"></ng-content>
+      </div>
+
+      <app-update-comment #edit [toUpdate]="reply" image="{{currentUser.image.png}}"></app-update-comment>
+    </div>
+
+
+  </div>
+
+
+  <!-- This is the container for the like, dislike, reply, edit, and delete buttons. -->
+  <div class="flex justify-between">
+
+    <!-- This is the component for the like and dislike buttons and vote function. -->
+    <app-up-down-vote class="md:hidden" [comment]="reply"></app-up-down-vote>
+
+    <!-- This is the reply button, displayed only if the comment does not belong to the current user. When clicked, it opens the reply comment panel. -->
+    <app-reply-button class="md:hidden" [comment]="reply" [currentUser]="currentUser" (openReplybox)="replybox.open = true"></app-reply-button>
+
+    <!-- This is the container for the delete and edit buttons, displayed only if the comment belongs to the current user. -->
+    <app-delete-edit-buttons *ngIf="isCurrentUser()" class="md:hidden" [comment]="reply" [currentUser]="currentUser" (openUpdatebox)="edit.open = true"></app-delete-edit-buttons>
+
+
+  </div>
+
+</div>
+
+
+<!--<app-reply-comment #replybox [parentComment]="parentComment" image="{{currentUser.image.png}}"></app-reply-comment>-->
+<app-reply-comment #replybox [replyHost]="reply" image="{{currentUser.image.png}}"></app-reply-comment>
+
+

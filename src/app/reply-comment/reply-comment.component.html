@@ -1,0 +1,25 @@
+<div *ngIf="open" class="mt-2 p-4 rounded-md space-y-4 bg-White">
+
+  <!-- A container for the user's image and the reply button -->
+  <div class="flex justify-between items-center md:items-start md:space-x-4">
+    <img class="hidden w-8 h-8 md:block" src="{{image}}" alt="userimage">
+
+    <!-- A textarea for the user to enter their reply -->
+    <textarea #text class="h-20 px-4 py-2 border border-Light-gray rounded-lg w-full" [value]="replyMessage" (keydown)="onKeyDown($event)"></textarea>
+
+    <!-- The reply button which triggers the sendReply function -->
+    <button class="hidden px-5 py-2 text-White rounded-lg bg-Moderate-blue md:block" (click)="sendReply(text.value)">REPLY</button>
+  </div>
+
+  <!-- A container for the user's image and the reply button -->
+  <div class="flex justify-between items-center md:hidden">
+    <img class="w-8 h-8" src="{{image}}" alt="userimage">
+
+    <!-- The reply button which triggers the sendReply function -->
+    <button class="px-5 py-2 text-White rounded-lg bg-Moderate-blue md:hidden" (click)="sendReply(text.value)">REPLY</button>
+  </div>
+
+
+</div>
+
+

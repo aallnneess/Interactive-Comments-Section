@@ -1,0 +1,18 @@
+<div *ngIf="open" class="pt-2">
+
+  <!-- This is a textarea element that is bound to the parentComment content property. -->
+  <textarea #text class="h-24 px-4 py-2 border border-Light-gray rounded-lg w-full" [value]="toUpdate.content"></textarea>
+
+  <!-- This is an image element that displays the user image. -->
+  <div class="flex justify-end items-center">
+
+    <!-- This is a button element that calls the updateComment function when clicked. -->
+    <button class="px-5 py-2 text-White rounded-lg bg-Moderate-blue" (click)="updateComment(text.value)">UPDATE</button>
+  </div>
+
+</div>
+
+
+
+
+

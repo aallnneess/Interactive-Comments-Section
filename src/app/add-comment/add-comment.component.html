@@ -1,0 +1,21 @@
+<div class="p-4 rounded-md space-y-4 bg-White">
+
+  <!-- Textarea for entering a new comment -->
+  <textarea #text class="h-24 px-4 py-2 border border-Light-gray rounded-lg w-full" placeholder="Add a comment..."></textarea>
+
+  <!-- Div containing user image and SEND button -->
+  <div class="flex justify-between items-center">
+
+    <!-- User image -->
+    <img class="w-8 h-8" src="{{image}}" alt="userimage">
+
+    <!-- SEND button to post the comment -->
+    <button class="px-5 py-2 text-White rounded-lg bg-Moderate-blue hover:opacity-40" (click)="sendComment(text.value); text.value = ''">SEND</button>
+  </div>
+
+
+</div>
+
+
+
+

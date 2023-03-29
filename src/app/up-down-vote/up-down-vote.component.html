@@ -1,0 +1,12 @@
+<!-- A container for the upvote, score, and downvote buttons -->
+<div class="flex px-3 py-1 text-lg font-medium space-x-3 rounded-lg bg-Very-light-gray md:flex-col md:justify-center md:items-center md:space-x-0">
+
+  <!-- The upvote button -->
+  <button class="text-Grayish-Blue font-bold text-opacity-40 hover:text-Moderate-blue" (click)="upvote()">+</button>
+  <!-- The score of the comment -->
+  <p class="text-Moderate-blue">{{comment.score}}</p>
+  <!-- The downvote button -->
+  <button class="text-Grayish-Blue font-bold text-opacity-40 hover:text-Moderate-blue" (click)="downvote()">-</button>
+
+
+</div>

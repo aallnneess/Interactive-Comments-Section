@@ -1,0 +1,11 @@
+<!-- Show the button only if the current user is not the author of the comment -->
+
+<!-- Add a reply icon -->
+<button *ngIf="!isCurrentUser()"
+        class="flex items-center text-Moderate-blue space-x-2 text-lg font-medium hover:opacity-40 "
+        (click)="openReplybox.emit(true)">
+  <!-- Add a reply icon -->
+  <img class="w-3 h-3" src="assets/images/icon-reply.svg" alt="replay">
+  <!-- Add the text "Reply" -->
+  <p class="">Reply</p>
+</button>

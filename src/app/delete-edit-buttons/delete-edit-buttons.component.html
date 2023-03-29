@@ -1,0 +1,19 @@
+<!-- This is the container for the delete and edit buttons, displayed only if the comment belongs to the current user. -->
+<div *ngIf="isCurrentUser()" class="flex space-x-3">
+
+  <!-- This is the delete button. When clicked, it shows a modal confirmation window. -->
+  <button class="flex items-center text-Soft-Red space-x-2 text-lg font-medium hover:opacity-40" (click)="modal.hidden = false">
+    <img class="" src="assets/images/icon-delete.svg" alt="replay">
+    <p class="">Delete</p>
+  </button>
+
+  <!-- This is the modal confirmation window for deleting the comment. -->
+  <app-modal #modal [comment]="comment"></app-modal>
+
+  <!-- This is the edit button. When clicked, it opens the edit comment panel. -->
+  <button class="flex items-center text-Moderate-blue space-x-2 text-lg font-medium hover:opacity-40 " (click)="openUpdatebox.emit(true)">
+    <img class="" src="assets/images/icon-edit.svg" alt="replay">
+    <p class="">Edit</p>
+  </button>
+
+</div>
